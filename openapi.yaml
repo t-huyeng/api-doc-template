@@ -11,6 +11,8 @@ paths:
   /dashboard/{AGS}.json:
     get:
       summary: Name des Endpoints
+      tags:
+        - default
       responses:
         '200':
             description: OK
