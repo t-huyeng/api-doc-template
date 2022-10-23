@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - "openapi*.yaml"
+  workflow_dispatch:
 
 jobs:
   openapi_check:
@@ -21,7 +22,8 @@ jobs:
           set -C; echo "extends: spectral:oas" > .spectral.yaml
 
       # Run Spectral
-      - uses: stoplightio/spectral-action@latest
+      - name: "Lint file"
+        uses: stoplightio/spectral-action@latest
         with:
           file_glob: openapi.yaml
           spectral_ruleset: .spectral.yaml
